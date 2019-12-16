@@ -219,19 +219,19 @@ class IoTJobExecutor:
             # TODO compare supplied signature against the public key / firmware validator on the chip.  Explicitly reject the job if it does not match
 
             # Update the status to SUCCEEDED. This can also be executed mid job to supply status updates (e.g. percentage complete)
-            # job_response = await self.req_resp("{}/update".format(job_id), {
-            #     "status": "SUCCEEDED",
-            #     "expectedVersion": version,
-            # })
+            job_response = await self.req_resp("{}/update".format(job_id), {
+                "status": "SUCCEEDED",
+                "expectedVersion": version,
+            })
         except:
             logging.exception("Error processing stream")
-            # job_response = await self.req_resp("{}/update".format(job_id), {                
-            #     "status": "FAILED",
-            #     "statusDetails": {
-            #         "reason": "Put in your excuse here"
-            #     },
-            #     "expectedVersion": version,
-            # })
+            job_response = await self.req_resp("{}/update".format(job_id), {                
+                "status": "FAILED",
+                "statusDetails": {
+                    "reason": "Put in your excuse here"
+                },
+                "expectedVersion": version,
+            })
         logging.info("Final job response is %s", job_response)
 
         

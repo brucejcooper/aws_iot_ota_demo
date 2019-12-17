@@ -216,7 +216,7 @@ class IoTJobExecutor:
 
                 # TODO compare supplied signature against the public key / firmware validator on the chip.  Explicitly reject the job if it does not match
 
-                Update the status to SUCCEEDED. This can also be executed mid job to supply status updates (e.g. percentage complete)
+                # Update the status to SUCCEEDED. This can also be executed mid job to supply status updates (e.g. percentage complete)
                 job_response = await self.rpc.call("{}/update".format(job_id), {
                     "status": "SUCCEEDED",
                     "expectedVersion": version,
